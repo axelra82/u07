@@ -1,0 +1,35 @@
+<section class="container mt-5 mb-5">
+    <div class="row">
+      <div class="offset-3 col-6 mt-3">
+        <form
+          class="form-control"
+          #searchField="ngForm"
+          (ngSubmit)="searchRecipes(searchField.form.value.searchString)"
+        >
+          <input
+            ngModel
+            type="text"
+            class="form-control"
+            id="search-string"
+            name="searchString"
+            placeholder="Arrabiata"
+            value="Arrabiata"
+          >
+          
+          <button
+            class="btn btn-primary"
+            type="submit"
+          >
+            SEARCH
+          </button>
+        </form>
+      </div>
+    </div>
+</section>
+<ul>
+  <li
+    *ngFor="let recipe of recipes"
+  >
+    {{ recipe.strMeal }}
+  </li>
+</ul>
