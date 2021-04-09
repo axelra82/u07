@@ -3,7 +3,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class MealdbService {
   constructor(private http:HttpClient) { }
 
   // API GET request
-  mealSearch(searchString:string): Observable<any> {
+  mealSearch(searchString:string) {
     
     // API services
     const api = `https://www.themealdb.com/api/json/v1/${environment.REAPP_MEALDB_API_KEY}`;
@@ -39,8 +39,7 @@ export class MealdbService {
     
     // Response from request
     const response = this.http.get<any>(url, { responseType: 'json' });
-    // this.recipeData.next(response);
-    return response;
+    this.recipeData.next(response);
   }
 }
 
