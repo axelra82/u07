@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
   
+  constructor() { }
+
+  ngOnInit(): void {
+  }
   // constructor(private reciepsService:ReciepsService){}
   
   // public searchRecieps(data:string){
