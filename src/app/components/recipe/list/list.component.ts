@@ -3,6 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 // import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
+import { SaveBtnService } from '../../../services/save-btn.service';
+
 // import { Recipes } from '../../../models/recipes.model';
 
 // interface AppState {
@@ -23,12 +25,14 @@ export class ListComponent implements OnInit {
   constructor(
     // private store: Store<AppState>,
     // private router: Router,
+    private saveBtnService: SaveBtnService,
   ) {    
     // this.recipesSubscriber = this.store.select('recipes');
   }
 
   ngOnInit(): void {
     console.log(this.recipesData);
+
     
     // if(this.router.url !== '/saved'){
     //   this.recipesSubscriber.subscribe(

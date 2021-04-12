@@ -11,8 +11,10 @@ import { NavComponent } from './components/nav/nav.component';
 import { SearchComponent } from './components/search/search.component';
 import { ListComponent, SingleComponent } from './components/recipe/recipe.component';
 import { TagsComponent } from './components/tags/tags.component';
+import { SaveBtnComponent } from './components/save-btn/save-btn.component';
 // Services
 import { MealdbService } from './services/recipes.service';
+import { SaveBtnService } from './services/save-btn.service';
 // Pipes
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { TagsPipe } from './pipes/tags.pipe';
@@ -38,6 +40,7 @@ import { postReducer } from './reducers/post.reducer';
     HomeComponent,
     TagsComponent,
     SavedComponent,
+    SaveBtnComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { postReducer } from './reducers/post.reducer';
     StoreModule.forRoot({ recipes: postReducer }),
   ],
   providers: [
-    MealdbService
+    MealdbService,
+    SaveBtnService
   ],
   bootstrap: [
     AppComponent

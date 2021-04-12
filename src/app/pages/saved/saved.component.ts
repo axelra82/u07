@@ -12,16 +12,17 @@ export class SavedComponent implements OnInit {
   count: number = 0;
   saved: [];
   recipesData: object = [];
-
+  savedRecipes = JSON.parse(localStorage.getItem('nomnombase'));
+  
   constructor(
     private router: Router,
     private store: Store,
   ) { }
 
   ngOnInit(): void {
-    this.recipesData = [
-      'test'
-    ]
+    // this.recipesData = [
+    //   'test'
+    // ]
     // this.store.subscribe(
     //   (data:any) => {
     //     this.saved = data.recipes.saved;

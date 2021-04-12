@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
 
   recipesSubscriber: Observable<Recipes>
   recipesData: object = [];
-  results: number = 0;
 
   constructor(
     private store: Store<AppState>,
@@ -39,7 +38,7 @@ export class HomeComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.searchString = params.search;
       
-      // Maker sure search string isn't empty
+      // Make sure search string isn't empty
       if(this.searchString){
         this.mealdbService.list(this.searchString).subscribe(
           data => {
@@ -47,7 +46,6 @@ export class HomeComponent implements OnInit {
             if(data.meals !== null){
               // this.store.dispatch(new PostActions.GetRecipes(data.meals));
               this.recipesData = data.meals;
-              this.results = data.meals.length;
             }
           }
         );

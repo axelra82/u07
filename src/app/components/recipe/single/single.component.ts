@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MealdbService } from '../../../services/recipes.service';
+import { SaveBtnService } from '../../../services/save-btn.service';
 import { Recipes } from '../../../models/recipes.model';
 
 @Component({
@@ -17,6 +18,7 @@ export class SingleComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private mealService: MealdbService,
+    private saveBtnService: SaveBtnService,
   ) { }
 
   // Function for recipe ingredient/measurement extraction to array

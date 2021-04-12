@@ -4,6 +4,6 @@
 </article>
 
 <article *ngIf="searchString">
-    <h3>Your search for <span class="text-primary fw-bold">{{ searchString }}</span> returned {{ results }} results</h3>
+    <h3>Your search for <span class="text-primary fw-bold">{{ searchString }}</span> returned {{ recipesData.length }} results</h3>
     <app-list [recipesData]="recipesData"></app-list>
 </article>
