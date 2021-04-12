@@ -6,15 +6,10 @@
                 <span id="area" class="text-muted  fw-bold">{{ d.strArea }}</span> / 
                 <span id="category" class="text-muted fw-bold">{{ d.strCategory }}</span>
             </p>
-            <ul class="tags" *ngIf="d.strTags">
-                <li class="text-muted fw-bold tag" *ngFor="let tag of d.strTags | tags">
-                    <a [routerLink]="['/']" [queryParams]="{search: tag | unhash}">
-                        {{ tag }}
-                    </a>
-                </li>
-            </ul>
+            <app-tags [tags]="d.strTags"></app-tags>
             <p><a href="{{ d.strSource }}">Original source</a></p>
             <p><a href="{{ d.strYoutube }}">YouTube video</a></p>
+            <p><a href="{{ permalink }}">Permalink to recipe</a></p>
         </div>
             <img id="thumb" class="col-lg-8 col-12" src="{{ d.strMealThumb }}" alt="{{ d.strMeal }}" />
     </div>

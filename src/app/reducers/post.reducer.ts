@@ -4,7 +4,7 @@ import { Recipes } from '../models/recipes.model';
 export type Action = PostActions.All;
 
 const defaultState: Recipes = {
-    save: [],
+    saved: [],
     list: [],
     single: {
         idMeal: '',
@@ -75,6 +75,9 @@ export function postReducer(state: Recipes = defaultState, action: Action){
 
         case PostActions.SET_RECIPE:
             return newState(state, {single: action.payload });
+        
+        case PostActions.SAVE_RECIPE:
+            return newState(state, {saved: action.payload });
             
         default:
             return defaultState;

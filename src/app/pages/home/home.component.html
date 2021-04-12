@@ -1,3 +1,9 @@
-<h1>Welcome to the nomnom base! 🤩</h1>
-<p>Get your recipe here, just use the search box and let us do the rest... until the cooking starts 🤷‍♂️</p>
-<app-list></app-list>
+<article>
+    <h1>Welcome to the nomnom base! 🤩</h1>
+    <p>Get your recipe here, just use the search box and let us do the rest... until the cooking starts 🤷‍♂️</p>    
+</article>
+
+<article *ngIf="searchString">
+    <h3>Your search for <span class="text-primary fw-bold">{{ searchString }}</span> returned {{ results }} results</h3>
+    <app-list [recipesData]="recipesData"></app-list>
+</article>

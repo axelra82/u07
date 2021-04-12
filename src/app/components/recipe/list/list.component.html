@@ -1,26 +1,19 @@
 <section class="container mt-5 mb-5">
     <div class="row mt-3">
-        <div *ngFor="let recipe of recipesList; index as idx;" class="col-lg-4 col-md-6 col-12">
+        <div *ngFor="let recipe of recipesData" class="col-lg-4 col-md-6 col-12">
             <article class="card mt-3">
                 <img src='{{ recipe.strMealThumb }}' class="card-img-top" alt='{{ recipe.strMeal }}'>
                 <div class="card-body">
                     <h5 class="card-title">{{ recipe.strMeal }}</h5>
+                    <app-tags [tags]="recipe.strTags"></app-tags>
                     <p class="card-text">{{ recipe.strInstructions | truncate:120 }}</p>
                     <a
                         routerLink="/recipe/{{ recipe.idMeal }}"
                         class="btn btn-primary me-3"
-                        (click)="storeRecipe(idx)"
                     >
-                        Tell me how
+                        Show me
                     </a>
                     <a href="#" class="btn btn-success me-3">Save</a>
-                    <ul class="tags mt-3" *ngIf="recipe.strTags">
-                        <li class="text-muted fw-bold tag" *ngFor="let tag of recipe.strTags | tags">
-                           <a [routerLink]="['/']" [queryParams]="{search: tag | unhash}">
-                                {{ tag }}
-                            </a>
-                        </li>
-                    </ul>
                 </div>
             </article>
         </div>

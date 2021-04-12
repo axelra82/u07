@@ -4,8 +4,9 @@
     (ngSubmit)="searchRecipes(searchField.form.value.searchString)"
 >
     <input
+        ngModel
         class="form-control"
-        placeholder="Search, e.g. {{ searchPlaceholder() }}"
+        placeholder="Search, e.g. {{ randomString }}"
         aria-label="Search"
         name="searchString"
     >

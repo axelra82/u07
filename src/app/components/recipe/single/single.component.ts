@@ -12,6 +12,7 @@ export class SingleComponent implements OnInit {
 
   recipeData: Recipes['single'];
   details: object;
+  permalink: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,7 +20,7 @@ export class SingleComponent implements OnInit {
   ) { }
 
   // Function for recipe ingredient/measurement extraction to array
-  recipeDetails(recipe){
+  recipeDetails(recipe: object){
 
     // Create empty array
     const detailsArray = [];
@@ -48,9 +49,13 @@ export class SingleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.mealService.single(this.route.snapshot.params.id).subscribe(
+    // Rather than storing existing recipe data from search in state we
+    // use the recipe ID using the route parameter id.
+    // This gives us a premalink like functionallity as the recipe data
+    // isn't reliant on user interaction to populate state.
+    this.permalink = this.route.snapshot.params.id;
+    this.mealService.single(this.permalink).subscribe(
       data => {
-        console.log(data.meals[0]);
         this.recipeData = data.meals[0];
         this.recipeDetails(this.recipeData);
       }

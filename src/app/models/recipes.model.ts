@@ -1,5 +1,5 @@
 export interface Recipes {
-    save: [];
+    saved: [];
     list: [];
     single: {
         idMeal: string;
