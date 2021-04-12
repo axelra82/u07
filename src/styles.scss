@@ -6,3 +6,28 @@
     font-family: sans-serif;
     font-size: 18px;
 }
+
+.tags{
+    list-style: none;
+    padding: .7rem 0;
+    border-top: 3px solid #f5f5f5;
+    border-bottom: 3px solid #f5f5f5;
+
+    .tag{
+        display: inline;
+
+        &:nth-child(1n){
+            margin-right: .25rem;
+        }
+
+        a{
+            border: 1px solid #ccc;
+            padding: .125rem .315rem;
+            border-radius: .25rem;
+            background: #f5f5f5;
+            font-size: .75rem;
+            text-decoration: none;
+            color: #000;
+        }
+    }
+}

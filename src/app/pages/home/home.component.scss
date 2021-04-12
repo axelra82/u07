@@ -1,0 +1,9 @@
+.examples-list{
+    list-style: none;
+    display: flex;
+    padding: 0;
+    
+    :nth-child(1n){
+        margin-right: .25rem;
+    }
+}

@@ -12,7 +12,12 @@ import { ListComponent, SingleComponent } from './components/recipe/recipe.compo
 
 import { MealdbService } from './services/recipes.service';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { TagsPipe } from './pipes/tags.pipe';
+import { UnhashPipe } from './pipes/unhash.pipe';
 import { HomeComponent } from './pages/home/home.component';
+
+import { StoreModule } from '@ngrx/store';
+import { postReducer } from './reducers/post.reducer';
 
 @NgModule({
   declarations: [
@@ -22,6 +27,8 @@ import { HomeComponent } from './pages/home/home.component';
     ListComponent,
     SingleComponent,
     TruncatePipe,
+    TagsPipe,
+    UnhashPipe,
     NavComponent,
     HomeComponent,
   ],
@@ -30,6 +37,7 @@ import { HomeComponent } from './pages/home/home.component';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    StoreModule.forRoot({ recipes: postReducer }),
   ],
   providers: [
     MealdbService

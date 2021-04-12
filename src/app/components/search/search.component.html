@@ -1,19 +1,17 @@
 <form
     class="input-group"
     #searchField="ngForm"
-    (ngSubmit)="userSearch(searchField.form.value.searchString)"
+    (ngSubmit)="searchRecipes(searchField.form.value.searchString)"
 >
     <input
         class="form-control"
-        type="search"
-        placeholder="Search, e.g. Arrabiata"
+        placeholder="Search, e.g. {{ searchPlaceholder() }}"
         aria-label="Search"
-        id="search-string"
         name="searchString"
     >
     <button
-        class=" btn btn-outline-primary"
         type="submit"
+        class="btn btn-outline-primary"
     >
         nom nom
     </button>

@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MealdbService } from '../../../services/recipes.service';
+
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import * as PostActions from '../../../actions/post.actions';
+import { Recipes } from '../../../models/recipes.model';
+
+interface AppState {
+  recipes: Recipes;
+}
 
 @Component({
   selector: 'app-list',
@@ -8,24 +17,19 @@ import { MealdbService } from '../../../services/recipes.service';
 })
 export class ListComponent implements OnInit {
 
-  // recipes: any;
+  recipesSubscriber: Observable<Recipes>
+  recipesList: [];
 
-  constructor(private _mealdbService: MealdbService) { }
-  
-  // get recipeData(): any{
-  //   return this._mealdbService.recipeData;
-  // }
-
-  // set recipes(object:any){
-  //   // this._mealdbService.recipeData;
-  // };
-  
-  ngOnInit() {
-    this._mealdbService.recipeData.subscribe(data => {
-      console.log('Subscribe data');
-      console.log(data);
-      // this.recipes = data;
-    });
+  constructor(
+    private store: Store<AppState>
+  ) {    
+    this.recipesSubscriber = this.store.select('recipes');
+    
   }
 
+  ngOnInit(): void {
+    this.recipesSubscriber.subscribe(
+      data => this.recipesList = data.list
+    )
+  }
 }

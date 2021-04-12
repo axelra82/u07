@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { MealdbService } from '../../services/recipes.service';
+import { Component, PipeTransform } from '@angular/core';
+import { Router, ActivatedRoute  } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-search',
@@ -8,19 +11,44 @@ import { MealdbService } from '../../services/recipes.service';
 })
 export class SearchComponent {
 
+  randomArray = [
+    'arrabiata',
+    'vegan',
+    'chicken',
+    'chocolate'
+  ];
+  
+  searchString: string;
+
   constructor(
-    private _mealdbService:MealdbService,
-  ) { }
-
-
-  userSearch(str:string){
-    if(str === undefined || str === ''){
-      str = 'Arrabiata';
-    }
-
-    console.log(`In search component: ${str}`);
-    this._mealdbService.mealSearch(str);
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {
+    
   }
 
-  ngOnInit(): void { }
+  randomString() {
+    this.searchString = this.randomArray[Math.floor(Math.random() * this.randomArray.length)];
+  }
+
+  searchPlaceholder() {
+    this.randomString();
+    return this.searchString;
+  }
+
+  searchRecipes(str:string) {
+
+    while(str === undefined || str === ''){
+      str = window.prompt('You forgot to enter something to search for. Try someting like:', `${this.searchString}`);
+    }
+
+    this.router.navigate(
+      ['/'],
+      {
+        queryParams: {
+          'search': str.toLowerCase()
+        }
+      }
+    );
+  }
 }
